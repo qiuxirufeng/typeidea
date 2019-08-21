@@ -62,13 +62,34 @@ class PostAdmin(admin.ModelAdmin):
 
     # 编辑页面
     save_on_top = True
+    
+    exclude = ('owner', )
 
-    fields = (
-        ('category', 'title'),
-        'desc',
-        'status',
-        'content',
-        'tag',
+    # fields = (
+    #     ('category', 'title'),
+    #     'desc',
+    #     'status',
+    #     'content',
+    #     'tag',
+    # )
+    fieldsets = (
+        ('基础配置', {
+            'description': '基础配置描述',
+            'fields': (
+                ('title', 'category'),
+                'status',
+            ),
+        }),
+        ('内容', {
+            'fields': (
+                'desc',
+                'content',
+            ),
+        }),
+        ('额外信息', {
+            'classes': ('collapse', ),
+            'fields': ('tag', ),
+        })
     )
 
     def operator(self, obj):
