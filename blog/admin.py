@@ -106,3 +106,10 @@ class PostAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super(PostAdmin, self).get_queryset(request)
         return qs.filter(owner=request.user)
+        
+    # class Media:
+    #     css = {
+    #         'all': ("https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css", ),
+    #     }
+
+    #     js = ('https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.js', )
